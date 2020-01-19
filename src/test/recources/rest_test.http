@@ -1,0 +1,31 @@
+GET http://localhost:8080/searchpart?partname=motherboard2&vendor=asus2&partnumber=mother&qty=1000
+Accept: */*
+Cache-Control: no-cache
+###
+GET http://localhost:8080/searchpart?fromshippeddate=%D1%8F%D0%BD%D0%B2-19-2018
+Accept: */*
+Cache-Control: no-cache
+
+###
+GET http://localhost:8080/allpart
+Accept: */*
+Cache-Control: no-cache
+
+###
+POST http://localhost:8080/part
+Content-type: application/json
+Cache-Control: no-cache
+
+{
+  "partName": "motherboard2",
+  "partNumber": "mother2",
+  "vendor": "asus2",
+  "qty": 1030,
+  "shippedDate": "2018-02-13",
+  "receiveDate": "2018-02-23"
+}
+
+<> 2020-01-19T094851.200.json
+
+###
+

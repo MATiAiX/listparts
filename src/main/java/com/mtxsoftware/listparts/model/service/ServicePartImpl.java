@@ -3,10 +3,9 @@ package com.mtxsoftware.listparts.model.service;
 import com.mtxsoftware.listparts.model.Part;
 import com.mtxsoftware.listparts.model.repository.RepositoryPart;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -33,10 +32,10 @@ public class ServicePartImpl implements ServicePart {
     }
 
     @Override
-    public void updatePart(Long id, String partName, String partNumber, Integer qty, Date shippedDate, Date receiveDate) {
+    public void updatePart(Long id, String partname, String partnumber, Integer qty, LocalDate shippedDate, LocalDate receiveDate) {
         Part findPart = this.getPartById(id);
         findPart.setQty(qty);
-        findPart.setPartName(partName);
+        findPart.setPartName(partname);
         findPart.setReceiveDate(receiveDate);
         findPart.setShippedDate(shippedDate);
 
@@ -60,10 +59,25 @@ public class ServicePartImpl implements ServicePart {
     }
 
     @Override
-    public List<Part> findByPartName(String partName) {
+    public List<Part> findByPartname(String partname) {
         List<Part> resultList = new ArrayList<>();
-        repositoryPart.findByPartNameContaining(partName).iterator().forEachRemaining(resultList::add);
+        repositoryPart.findByPartnameContaining(partname).iterator().forEachRemaining(resultList::add);
         return resultList;
     }
 
+    @Override
+    public List<Part> searchPart(String partname, String partnumber, String vendor, Integer qty,
+                                 LocalDate fromShippedDate, LocalDate DatetoShippedDate,
+                                 LocalDate fromReceiveDate, LocalDate toReceiveDate) {
+        //String columnName, String sortDirection) {
+        List<Part> resultList = new ArrayList<>();
+
+        List<Part> result = repositoryPart.findPart(partname, partnumber, vendor, qty,
+                fromShippedDate, DatetoShippedDate, fromReceiveDate, toReceiveDate);
+        //"p." + columnName, sortDirection.name());
+        result.iterator().
+
+                forEachRemaining(resultList::add);
+        return resultList;
+    }
 }

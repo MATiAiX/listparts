@@ -1,7 +1,7 @@
 package com.mtxsoftware.listparts.model;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "part", schema = "testpart")
@@ -12,10 +12,10 @@ public class Part {
     private Long id;
 
     @Column(name = "part_name")
-    private String partName;
+    private String partname;
 
     @Column(name = "part_number")
-    private String partNumber;
+    private String partnumber;
 
     @Column(name = "vendor")
     private String vendor;
@@ -24,10 +24,10 @@ public class Part {
     private Integer qty;
 
     @Column(name = "shipped_date")
-    private Date shippedDate;
+    private LocalDate shippedDate;
 
     @Column(name = "receive_date")
-    private Date receiveDate;
+    private LocalDate receiveDate;
 
     public Long getId() {
         return id;
@@ -38,19 +38,19 @@ public class Part {
     }
 
     public String getPartName() {
-        return partName;
+        return partname;
     }
 
-    public void setPartName(String partName) {
-        this.partName = partName;
+    public void setPartName(String partname) {
+        this.partname = partname;
     }
 
     public String getPartNumber() {
-        return partNumber;
+        return partnumber;
     }
 
-    public void setPartNumber(String partNumber) {
-        this.partNumber = partNumber;
+    public void setPartNumber(String partnumber) {
+        this.partnumber = partnumber;
     }
 
     public String getVendor() {
@@ -69,19 +69,19 @@ public class Part {
         this.qty = qty;
     }
 
-    public Date getShippedDate() {
+    public LocalDate getShippedDate() {
         return shippedDate;
     }
 
-    public void setShippedDate(Date shippedDate) {
+    public void setShippedDate(LocalDate shippedDate) {
         this.shippedDate = shippedDate;
     }
 
-    public Date getReceiveDate() {
+    public LocalDate getReceiveDate() {
         return receiveDate;
     }
 
-    public void setReceiveDate(Date receiveDate) {
+    public void setReceiveDate(LocalDate receiveDate) {
         this.receiveDate = receiveDate;
     }
 }
